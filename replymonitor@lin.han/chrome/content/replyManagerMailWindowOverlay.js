@@ -1,14 +1,14 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
-Components.utils.import("resource://replymanager/modules/replyManagerUtils.jsm");
-Components.utils.import("resource://replymanager/modules/replyManagerCalendar.jsm");
-Components.utils.import("resource://replymanager/modules/calUtils.jsm");
-Components.utils.import("resource:///modules/gloda/public.js");
-Components.utils.import("resource:///modules/gloda/indexer.js");
-Components.utils.import("resource:///modules/mailServices.js");
-Components.utils.import("resource:///modules/Services.jsm");
-Components.utils.import("resource://gre/modules/Preferences.jsm");
+var { replyManagerUtils } = ChromeUtils.import("resource://replymanager/modules/replyManagerUtils.jsm");
+var { replyManagerCalendar } = ChromeUtils.import("resource://replymanager/modules/replyManagerCalendar.jsm");
+var { calUtils } = ChromeUtils.import("resource://replymanager/modules/calUtils.jsm");
+//var { public } = ChromeUtils.import("resource:///modules/gloda/public.js");
+var { indexer } = ChromeUtils.import("resource:///modules/gloda/indexer.js");
+var { mailServices } = ChromeUtils.import("resource:///modules/mailServices.js");
+var { Services } = ChromeUtils.import("resource:///modules/Services.jsm");
+var { Preferences } = ChromeUtils.import("resource://gre/modules/Preferences.jsm");
 
 function onLoad() {
   let replyManagerMenu = document.getElementById("replyManagerMailContextMenu");
@@ -210,8 +210,11 @@ var replyManagerMailListener = {
   msgsDeleted: function(aItems) {
     let mailEnumerator = aItems.enumerate();
     while (mailEnumerator.hasMoreElements()) {
-      let msg = mailEnumerator.getNext()
-                              .QueryInterface(Components.interfaces.nsIMsgDBHdr);
+      let msg = mailEnumerator.getNext();
+      try {
+        msg = msg.QueryInterface(Components.interfaces.nsIMsgDBHdr);
+      }
+      catch(x) {}
       if (msg instanceof Components.interfaces.nsIMsgDBHdr &&
           ReplyManagerUtils.isHdrExpectReply(msg)) {
         ReplyManagerUtils.resetExpectReplyForHdr(msg);

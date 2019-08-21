@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "applications": {
+        "gecko": {
+            "id": "replymonitor@lin.han",
+            "strict_min_version": "68.0"
+        }
+    },
+    "name": "Reply Monitor",
+    "description": "Keep track of your emails and replies",
+    "version": "2.0.0",
+
+    "legacy": {
+        "type": "xul",
+        "options": {
+            "page": "chrome://replymanager/content/replyManagerPreferences.xul",
+        }
+    }
+}

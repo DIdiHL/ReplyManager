@@ -4,17 +4,17 @@
 
 let EXPORTED_SYMBOLS = ["ReplyManagerCalendar"];
 
-const Cu = Components.utils;
+//const Cu = Components.utils;
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const ReplyManager = "ReplyManager";
 
-Cu.import("resource://gre/modules/errUtils.js");
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource:///modules/gloda/public.js");
-Cu.import("resource:///modules/gloda/index_msg.js");
-Cu.import("resource:///modules/StringBundle.js");
-Cu.import("resource://gre/modules/Preferences.jsm");
+var { errUtils } = ChromeUtils.import("resource://gre/modules/errUtils.js");
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+//var { public } = ChromeUtils.import("resource:///modules/gloda/public.js");
+var { index_msg } = ChromeUtils.import("resource:///modules/gloda/index_msg.js");
+var { StringBundle } = ChromeUtils.import("resource:///modules/StringBundle.js");
+var { Preferences } = ChromeUtils.import("resource://gre/modules/Preferences.jsm");
 
 /**
  * ReplyManagerCalendar
@@ -29,7 +29,7 @@ let ReplyManagerCalendar = {
   initCalendar: function()
   {
     try {
-	  Cu.import("resource://calendar/modules/calUtils.jsm");
+	  var { calUtils } = ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
 	} catch(e) {
 	  // If Lightning is not installed, disable the feature
 	  this.disableReplyManager();

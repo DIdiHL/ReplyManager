@@ -2,9 +2,12 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<?xml-stylesheet href="chrome://replymanager/skin/replyManager.css"?>
-<?xml-stylesheet href="chrome://calendar/content/widgets/calendar-widget-bindings.css" type="text/css"?>
-<?xml-stylesheet href="chrome://calendar/content/datetimepickers/datetimepickers.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://replymanager/skin/replyManager.css"?>
+<?xml-stylesheet type="text/css" href="chrome://calendar/content/widgets/calendar-widget-bindings.css"?>
+<?xml-stylesheet type="text/css" href="chrome://calendar/content/datetimepickers/datetimepickers.css"?>
+<?xml-stylesheet type="text/css" href="chrome://calendar-common/skin/widgets/minimonth.css"?>
+<?xml-stylesheet type="text/css" href="chrome://calendar/content/widgets/calendar-widget-bindings.css"?>
+<?xml-stylesheet type="text/css" href="chrome://lightning-common/skin/datetimepickers.css"?>
 <!DOCTYPE window [
   <!ENTITY % replyManagerDTD SYSTEM "chrome://replymanager/locale/replyManager.dtd">
   %replyManagerDTD;
@@ -16,6 +19,8 @@
 <script type="application/javascript" src="chrome://replymanager/content/replyManagerComposeOverlay.js"/>
 <script type="application/javascript" src="chrome://calendar/content/calendar-ui-utils.js"/>
 <script type="application/javascript" src="chrome://calendar/content/calUtils.js"/>
+<script src="chrome://messenger/content/customElements.js"/>
+<script src="chrome://calendar/content/datetimepickers/datetimepickers.js"/>
 
 <commandset>
   <command id="cmd_toggle_other_replymanager_elements" oncommand="toggleOtherReplyManagerElements();"/>
@@ -28,7 +33,7 @@
     <checkbox id="other-elements-toggle" label="&other-elements-toggle.label;" checked="false"
               command="cmd_toggle_other_replymanager_elements"
               class="expectReplyUnchecked"/>
-    <datepicker id="reminder-date" disabled="true"/>
+    <datetimepicker id="reminder-date" disabled="true"/>
   </hbox>
 </toolbox>
 </overlay>

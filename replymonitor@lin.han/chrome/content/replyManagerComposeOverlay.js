@@ -1,10 +1,10 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-Components.utils.import("resource://replymanager/modules/replyManagerUtils.jsm");
-Components.utils.import("resource://replymanager/modules/calUtils.jsm");
-Components.utils.import("resource:///modules/gloda/indexer.js");
-Components.utils.import("resource://gre/modules/Preferences.jsm");
+var { replyManagerUtils } = ChromeUtils.import("resource://replymanager/modules/replyManagerUtils.jsm");
+var { calUtils } = ChromeUtils.import("resource://replymanager/modules/calUtils.jsm");
+var { indexer } = ChromeUtils.import("resource:///modules/gloda/indexer.js");
+var { Preferences } = ChromeUtils.import("resource://gre/modules/Preferences.jsm");
 
 function onLoad() {
   // We need both ReplyManager and Gloda indexer enabled to make this feature work.
@@ -75,7 +75,7 @@ replyManagerComposeStateListener.prototype = {
   NotifyComposeBodyReady: function() {},
 
   ComposeProcessDone: function(aResult) {
-    let folder = MailUtils.getFolderForURI(gMsgCompose.savedFolderURI);
+    let folder = MailUtils.getExistingFolder(gMsgCompose.savedFolderURI);
     let msgDB = folder.msgDatabase;
     let savedMsgHdr = msgDB.getMsgHdrForMessageID(this.msgID);
     let toggle = document.getElementById("other-elements-toggle").checked;

@@ -1,9 +1,13 @@
 /**
+ * TODO:
+ *    https://developer.thunderbird.net/add-ons/tb68/changes#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than
+ */
+/**
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-Components.utils.import("resource://replymanager/modules/replyManagerUtils.jsm");
+var { replyManagerUtils } = ChromeUtils.import("resource://replymanager/modules/replyManagerUtils.jsm");
 
 /**
  * Global Object to hold methods for the Reply Manager pref pane
