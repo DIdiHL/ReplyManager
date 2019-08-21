@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-Components.utils.import("resource://replymanager/modules/replyManagerUtils.jsm");
+var { replyManagerUtils } = ChromeUtils.import("resource://replymanager/modules/replyManagerUtils.jsm");
 
 /**
  * If the message is expecting replies we need to set the datepicker

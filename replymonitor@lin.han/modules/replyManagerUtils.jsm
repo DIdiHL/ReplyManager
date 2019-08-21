@@ -4,21 +4,21 @@
 
 let EXPORTED_SYMBOLS = ["ReplyManagerUtils"];
 
-const Cu = Components.utils;
+//const Cu = Components.utils;
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
 const consoleService = Cc["@mozilla.org/consoleservice;1"]
   .getService(Ci.nsIConsoleService);
 
-Cu.import("resource:///modules/gloda/public.js");
-Cu.import("resource://replymanager/modules/replyManagerCalendar.jsm");
-Cu.import("resource:///modules/mailServices.js");
-Cu.import("resource:///modules/gloda/index_msg.js");
-Cu.import("resource:///modules/StringBundle.js");
-Cu.import("resource://gre/modules/Preferences.jsm");
+//var { public } = ChromeUtils.import("resource:///modules/gloda/public.js");
+var { replyManagerCalendar } = ChromeUtils.import("resource://replymanager/modules/replyManagerCalendar.jsm");
+var { mailServices } = ChromeUtils.import("resource:///modules/mailServices.js");
+var { index_msg } = ChromeUtils.import("resource:///modules/gloda/index_msg.js");
+var { StringBundle } = ChromeUtils.import("resource:///modules/StringBundle.js");
+var {Preferences } = ChromeUtils.import("resource://gre/modules/Preferences.jsm");
 try {
-  Cu.import("resource://calendar/modules/calUtils.jsm");
+  var { calUtils } = ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
 } catch(e) {
   consoleService.logStringMessage('Lightning not installed');
 }
